@@ -3,7 +3,6 @@ import styled from "styled-components";
 import "./../../variables.scss";
 
 export const ProductHighlight = ({ elem }) => {
-  console.log(elem);
   return (
     <StyledLink
       to={`/product/${elem.id}`}

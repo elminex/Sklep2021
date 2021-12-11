@@ -13,7 +13,6 @@ export const MainPage = () => {
     }
   }, [data]);
   if (topSellers.length > 0) {
-    console.log(topSellers);
     return (
       <div>
         <PageHeading>Top Selling items</PageHeading>
