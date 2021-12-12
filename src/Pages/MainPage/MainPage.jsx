@@ -7,8 +7,8 @@ export const MainPage = () => {
   const [topSellers, setTopSellers] = useState([]);
   const data = useContext(ProductsContext);
   useEffect(() => {
-    if (data) {
-      const sortedData = data.sort((a, b) => b.sales - a.sales).slice(0, 6);
+    if (data.products) {
+      const sortedData = data.products.sort((a, b) => b.sales - a.sales).slice(0, 6);
       setTopSellers(sortedData);
     }
   }, [data]);

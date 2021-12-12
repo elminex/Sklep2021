@@ -8,18 +8,26 @@ export const ProductPage = () => {
   const [product, setProduct] = useState();
   const [quantity, setQuantity] = useState(1);
   const params = useParams();
-  const data = useContext(ProductsContext);
+  const { products, cart, setCart } = useContext(ProductsContext);
+
   useEffect(() => {
-    if (data) {
-      const singleProduct = data.find((element) => element.id === params.id);
+    if (products) {
+      const singleProduct = products.find(
+        (element) => element.id === params.id
+      );
       setProduct(singleProduct);
-      console.log(product);
     }
-  }, [data, params, product]);
+  }, [params, products]);
+
+  const cartHandler = (event) => {
+    const newCart = cart;
+    newCart.push({ product: product, quantity: quantity });
+    setCart(newCart);
+  };
 
   const quantityHandler = (event) => {
     setQuantity(parseInt(event.target.value, 10));
-  }
+  };
 
   if (product !== undefined) {
     return (
@@ -30,7 +38,12 @@ export const ProductPage = () => {
           <ProductDescription>{product.description}</ProductDescription>
           <ProductPrice>${product.price}</ProductPrice>
         </div>
-        <ProductSidebar quantity={quantity} quantityHandler={quantityHandler} stock={product.stock}/>
+        <ProductSidebar
+          quantity={quantity}
+          quantityHandler={quantityHandler}
+          stock={product.stock}
+          cartHandler={cartHandler}
+        />
       </Wrapper>
     );
   }

@@ -1,11 +1,25 @@
 import styled from "styled-components";
 import { StyledButton } from "../../Components/StyledButton/StyledButton";
+import { useState } from "react";
 
-export const ProductSidebar = ({quantity, quantityHandler, stock}) => {
+export const ProductSidebar = ({
+  quantity,
+  quantityHandler,
+  stock,
+  cartHandler,
+}) => {
+  const [buttonClicked, setButtonClicked] = useState(false);
   if (stock) {
     return (
       <Wrapper>
-        <StyledButton>Add to cart</StyledButton>
+        <StyledButton disabled={buttonClicked}
+          onClick={() => {
+            setButtonClicked(true);
+            cartHandler();
+          }}
+        >
+          {buttonClicked === true ? "Added to cart" : "Add to cart"}
+        </StyledButton>
         <QuantityLabel>
           <QuantitySelect
             min={1}
@@ -14,11 +28,13 @@ export const ProductSidebar = ({quantity, quantityHandler, stock}) => {
             onChange={quantityHandler}
           />
         </QuantityLabel>
+        <Stock>In stock: {stock} </Stock>
       </Wrapper>
     );
-  }
-  else return (<Wrapper>nothign in stock</Wrapper>);
+  } else return <Wrapper>nothign in stock</Wrapper>;
 };
+
+const Stock = styled.p``;
 
 const QuantitySelect = styled.input.attrs({
   id: "quantity",
