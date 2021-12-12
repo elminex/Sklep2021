@@ -54,7 +54,4 @@ const ProductListItem = styled.li`
   margin: 0;
   padding: 12px 0;
   border-bottom: 2px solid ${(props) => props.theme.yellow};
-  @media (min-width: 768px) {
-    columns: 200px 2;
-  }
 `;

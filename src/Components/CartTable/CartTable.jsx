@@ -1,6 +1,7 @@
 import { useContext } from "react";
 import { ProductsContext } from "../../ProductsContext";
 import { CartItem } from "../CartItem/CartItem";
+import styled from "styled-components";
 
 export const CartTable = () => {
   const { cart, setCart } = useContext(ProductsContext);
@@ -19,17 +20,17 @@ export const CartTable = () => {
   };
 
   return (
-    <div>
-      <table>
-        <thead>
+    <Wrapper>
+      <StyledTable>
+        <StyledThead>
           <tr>
-            <th>No.</th>
-            <th>Name</th>
-            <th>Price</th>
-            <th>Quantity</th>
-            <th> </th>
+            <StyledTableHeading>No.</StyledTableHeading>
+            <StyledTableHeading>Name</StyledTableHeading>
+            <StyledTableHeading>Price</StyledTableHeading>
+            <StyledTableHeading>Quantity</StyledTableHeading>
+            <StyledTableHeading> </StyledTableHeading>
           </tr>
-        </thead>
+        </StyledThead>
         <tbody>
           {cart.map((cartItem, index) => (
             <CartItem
@@ -41,7 +42,39 @@ export const CartTable = () => {
             />
           ))}
         </tbody>
-      </table>
-    </div>
+      </StyledTable>
+    </Wrapper>
   );
 };
+
+const Wrapper = styled.div`
+   {
+    width: 100%;
+    overflow: auto;
+    margin-bottom: 32px;
+    @media (min-width: 768px) {
+      flex: 4;
+      margin: 0 16px 0 0;
+    }
+  }
+`;
+const StyledTable = styled.table`
+   {
+    width: 100%;
+    border-collapse: collapse;
+  }
+`;
+
+const StyledThead = styled.thead`
+   {
+    background-color: ${(props) => props.theme.backgroundGrey};
+  }
+`;
+
+const StyledTableHeading = styled.th`
+   {
+    padding: 8px;
+    color: ${(props) => props.theme.textBlack};
+    font-size: 12px;
+  }
+`;

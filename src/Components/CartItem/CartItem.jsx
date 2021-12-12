@@ -1,11 +1,13 @@
+import styled from "styled-components";
+import { StyledButton } from "../StyledButton/StyledButton";
+
 export const CartItem = ({ item, number, changeQuantity, removeItem }) => (
   <tr>
-    <td>{number}</td>
-    <td className="cart__table-name">{item.product.name}</td>
-    <td className="cart__table-price">${item.product.price}</td>
-    <td>
+    <StyledTd>{number}</StyledTd>
+    <StyledTd>{item.product.name}</StyledTd>
+    <StyledTd>${item.product.price}</StyledTd>
+    <StyledTd>
       <label htmlFor="quantity">
-        Product quantity:
         <input
           min="1"
           max={item.product.stock}
@@ -17,15 +19,22 @@ export const CartItem = ({ item, number, changeQuantity, removeItem }) => (
           }
         />
       </label>
-    </td>
-    <td>
-      <button
+    </StyledTd>
+    <StyledTd>
+      <StyledButton square
         className="cart__table-button"
         type="button"
         onClick={() => removeItem(item.product.id)}
       >
         X
-      </button>
-    </td>
+      </StyledButton>
+    </StyledTd>
   </tr>
 );
+
+const StyledTd = styled.td`
+   {
+    padding: 12px;
+    text-align: center;
+  }
+`;

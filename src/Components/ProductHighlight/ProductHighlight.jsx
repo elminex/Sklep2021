@@ -8,10 +8,10 @@ export const ProductHighlight = ({ elem }) => {
       to={`/product/${elem.id}`}
       style={{ backgroundImage: `url(${elem.photo})` }}
     >
-      <div>
+      <Overlay>
         <Price>${elem.price}</Price>
         <ProductName>{elem.name}</ProductName>
-      </div>
+      </Overlay>
     </StyledLink>
   );
 };
@@ -27,16 +27,29 @@ const StyledLink = styled(Link)`
   background-size: cover;
   text-decoration: none;
   text-align: center;
+  position: relative;
 `;
 
 const Price = styled.p`
    {
-    margin: 0 0 0 16px;
-    font-size: 16px;
+    padding: 16px;
+    margin: 0;
+    font-size: 20px;
   }
 `;
 const ProductName = styled.h3`
    {
-    font-size: 20px;
+    font-size: 24px;
+    padding 20px;
+    margin: 0;
   }
 `;
+
+const Overlay = styled.div`
+{background-color: rgba(245, 247, 250, 0.6);
+position: absolute;
+margin-left: auto;
+margin-right: auto;
+left: 0;
+right: 0;
+text-align: center;}`;
