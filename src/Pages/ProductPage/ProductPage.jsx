@@ -60,6 +60,7 @@ const Wrapper = styled.div`
 
 const Image = styled.img`
    {
+     max-height: 500px;
     margin-bottom: 16px;
   }
 `;

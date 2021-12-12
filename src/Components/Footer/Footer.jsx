@@ -5,7 +5,7 @@ import styled from "styled-components";
 export const Footer = () => (
   <StyledFooter>
     <FooterSidebar>
-      <Logo>LOGO</Logo>
+      <Logo>My Shop</Logo>
       <Social container="footer" />
     </FooterSidebar>
     <FooterNav>
@@ -59,6 +59,7 @@ const FooterSidebar = styled.div`
 `;
 const Logo = styled.div`
    {
+    font-family: "Fuzzy Bubbles", cursive;
     color: ${(props) => props.theme.textWhite};
     font-size: 3rem;
     margin-bottom: 20px;
