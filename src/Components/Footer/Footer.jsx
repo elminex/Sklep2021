@@ -11,11 +11,7 @@ export const Footer = () => (
     <FooterNav>
       <FooterNavList>
         <FooterListItem>
-          <StyledNavLink
-            to="/"
-          >
-            Home
-          </StyledNavLink>
+          <StyledNavLink to="/">Home</StyledNavLink>
         </FooterListItem>
         <FooterListItem>
           <StyledNavLink to="/shop">Shop</StyledNavLink>
@@ -94,7 +90,10 @@ const FooterNavList = styled.ul`
     @media (min-width: 992px) {
       columns: 5;
       display: flex;
-      justify-content: center
+      justify-content: center;
+    }
+    & .active {
+      color: ${(props) => props.theme.yellow};
     }
   }
 `;
@@ -115,8 +114,7 @@ const StyledNavLink = styled(NavLink)`
    {
     position: relative;
     text-decoration: none;
-    color: ${(props) =>
-      props.isActive ? props.theme.yellow : props.theme.textWhite};
+    color: ${(props) => props.theme.textWhite};
     text-transform: uppercase;
     transition: color 0.2s;
 

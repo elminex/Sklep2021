@@ -3,7 +3,6 @@ import { NavLink } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars, faTimes } from "@fortawesome/free-solid-svg-icons";
 import { Social } from "../Social/Social";
-import "./Header.scss";
 import styled from "styled-components";
 import { StyledButton } from "./../StyledButton/StyledButton";
 
@@ -15,70 +14,40 @@ export const Header = () => {
       <MenuButton square type="button" onClick={() => setMenu(!menu)}>
         <FontAwesomeIcon icon={faBars} />
       </MenuButton>
-      <nav className={menu ? "header__nav header__nav--active" : "header__nav"}>
+      <NavMenu menu={menu}>
         <NavLogo>My Shop</NavLogo>
         <NavButton square type="button" onClick={() => setMenu(!menu)}>
           <FontAwesomeIcon icon={faTimes} />
         </NavButton>
-        <ul className="header__nav-list">
-          <li className="header__nav-item">
-            <NavLink
-              className={({ isActive }) =>
-                isActive ? "header__link header__link--active" : "header__link"
-              }
-              onClick={() => setMenu(!menu)}
-              to="/"
-            >
+        <NavList>
+          <NavItem>
+            <StyledNavLink onClick={() => setMenu(!menu)} to="/">
               Home
-            </NavLink>
-          </li>
-          <li className="header__nav-item">
-            <NavLink
-              className={({ isActive }) =>
-                isActive ? "header__link header__link--active" : "header__link"
-              }
-              onClick={() => setMenu(!menu)}
-              to="/shop"
-            >
+            </StyledNavLink>
+          </NavItem>
+          <NavItem>
+            <StyledNavLink onClick={() => setMenu(!menu)} to="/shop">
               Shop
-            </NavLink>
-          </li>
-          <li className="header__nav-item">
-            <NavLink
-              className={({ isActive }) =>
-                isActive ? "header__link header__link--active" : "header__link"
-              }
-              onClick={() => setMenu(!menu)}
-              to="/terms"
-            >
-              Terms and Conditions
-            </NavLink>
-          </li>
-          <li className="header__nav-item">
-            <NavLink
-              className={({ isActive }) =>
-                isActive ? "header__link header__link--active" : "header__link"
-              }
-              onClick={() => setMenu(!menu)}
-              to="/contact"
-            >
-              Contact
-            </NavLink>
-          </li>
-          <li className="header__nav-item">
-            <NavLink
-              className={({ isActive }) =>
-                isActive ? "header__link header__link--active" : "header__link"
-              }
-              onClick={() => setMenu(!menu)}
-              to="/cart"
-            >
+            </StyledNavLink>
+          </NavItem>
+          <NavItem>
+            <StyledNavLink onClick={() => setMenu(!menu)} to="/cart">
               Cart
-            </NavLink>
-          </li>
-        </ul>
+            </StyledNavLink>
+          </NavItem>
+          <NavItem>
+            <StyledNavLink onClick={() => setMenu(!menu)} to="/terms">
+              Terms and Conditions
+            </StyledNavLink>
+          </NavItem>
+          <NavItem>
+            <StyledNavLink onClick={() => setMenu(!menu)} to="/contact">
+              Contact
+            </StyledNavLink>
+          </NavItem>
+        </NavList>
         <Social container="header" />
-      </nav>
+      </NavMenu>
     </StyledHeader>
   );
 };
@@ -107,6 +76,9 @@ const Logo = styled.h1`
     line-height: 2rem;
     text-align: center;
   }
+  @media (min-width: 996px) {
+    flex: 1;
+  }
 `;
 
 const NavLogo = styled(Logo)`
@@ -132,5 +104,96 @@ const NavButton = styled(StyledButton)`
 const MenuButton = styled(StyledButton)`
   @media (min-width: 768px) {
     display: none;
+  }
+`;
+
+const NavMenu = styled.nav`
+   {
+    position: absolute;
+    left: ${(props) => (props.menu ? "0" : "-305px")};
+    top: 0;
+    z-index: 20;
+    width: 300px;
+    overflow: hidden;
+    transition: left 0.3s;
+    background-color: white;
+    box-shadow: 1px 1px 5px black;
+    @media (min-width: 768px) {
+      position: static;
+      top: 0;
+      left: 0;
+      width: 100%;
+      margin: 0;
+      box-shadow: none;
+    }
+    @media (min-width: 996px) {
+      flex: 4;
+    }
+  }
+`;
+const NavList = styled.ul`
+   {
+    list-style-type: none;
+    padding: 0;
+    @media (min-width: 768px) {
+      text-align: right;
+    }
+  }
+`;
+
+const NavItem = styled.li`
+   {
+    padding: 20px 0 20px 56px;
+    font-size: 14px;
+    @media (min-width: 768px) {
+      display: inline-block;
+      padding: 16px 24px;
+    }
+  }
+`;
+
+const StyledNavLink = styled(NavLink)`
+  position: relative;
+  text-decoration: none;
+  color: ${(props) => props.theme.textBlack};
+  text-transform: uppercase;
+  transition: color 0.2s;
+  &:after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: -56px;
+    transform: translateY(-50%);
+    width: 0;
+    height: 4px;
+    background-color: ${(props) => props.theme.yellow};
+    transition: all 0.3s;
+  }
+
+  &:hover {
+    color: ${(props) => props.theme.yellow};
+  }
+
+  &.active {
+    &:after {
+      width: 48px;
+    }
+  }
+  @media (min-width: 768px) {
+    &:after {
+      top: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    &:hover {
+      color: $yellow;
+    }
+
+    &.active {
+      &:after {
+        width: 60px;
+      }
+    }
   }
 `;

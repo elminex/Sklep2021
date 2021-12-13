@@ -55,6 +55,11 @@ const Wrapper = styled.div`
     width: 100%;
     display: flex;
     flex-direction: column;
+    @media(min-width: 768px) {
+      flex-direction: row;
+      padding: 0 16px;
+      justify-content: center;
+    }
   }
 `;
 
