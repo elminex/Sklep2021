@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { Social } from "../../Components/Social/Social";
 export const Contact = () => {
   return (
     <Wrapper>
@@ -34,6 +35,7 @@ export const Contact = () => {
         </StyledLabel>
         <InputButton type="submit" value="Submit" />
       </StyledForm>
+      <Social container="contact" />
     </Wrapper>
   );
 };
@@ -41,13 +43,19 @@ export const Contact = () => {
 const Wrapper = styled.div`
    {
     padding: 24px;
-    background-color: ${(props) => props.theme.backgroundGrey};
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
 `;
 const StyledForm = styled.form`
   width: 100%;
+  max-width: 500px;
   display: flex;
   flex-direction: column;
+  background-color: ${(props) => props.theme.backgroundGrey};
+  margin-bottom: 32px;
+  padding: 16px 0;
 `;
 const StyledLabel = styled.label`
   padding: 12px 0;
@@ -67,12 +75,14 @@ const InputButton = styled.input`
       color: ${(props) =>
         props.disabled ? props.theme.textBlack : props.theme.textWhite};
       display: inline-block;
-      min-width: ${(props) => (props.square ? "40px" : "160px")};
-      height: ${(props) => (props.square ? "40px" : "55px")};
+      width: 160px;
+      height: 55px;
       border: none;
       border-radius: 3px;
       user-select: none;
       padding: 0 7px;
+      margin-left: calc(50% - 80px);
+      margin-top: 24px;
       font-size: 18px;
       line-height: ${(props) => (props.square ? "40px" : "56px")};
       background-color: ${(props) =>

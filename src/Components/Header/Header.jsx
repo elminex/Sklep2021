@@ -56,9 +56,6 @@ const StyledHeader = styled.header`
     position: relative;
     border-bottom: 3px solid ${(props) => props.theme.yellow};
     margin-bottom: 32px;
-    @media (min-width: 768px) {
-      flex-direction: column;
-    }
     @media (min-width: 992px) {
       flex-direction: row;
       padding: 20px 50px;
