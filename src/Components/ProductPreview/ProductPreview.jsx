@@ -28,13 +28,12 @@ export const ProductPreview = ({ elem }) => {
             {elem.company}
           </ProductCompany>
           <PriceAndStockWrapper>
-            <ProductPrice>${elem.price}</ProductPrice>
-
             {elem.stock > 0 ? (
               ""
             ) : (
               <DescriptionStock>Out of stock!</DescriptionStock>
             )}
+            <ProductPrice>${elem.price}</ProductPrice>
           </PriceAndStockWrapper>
         </ProductRight>
       </ProductMiddle>
@@ -68,13 +67,13 @@ const ProductRight = styled.div`
   width: 50%;
   display: flex;
   flex-direction: column;
+  padding-left: 16px;
 `;
 
 const DescriptionRight = styled.p`
   display: none;
   @media (min-width: 768px) {
     display: block;
-    margin-left: 24px;
     padding-bottom: 8px;
     text-align: left;
     border-bottom: 2px solid ${(props) => props.theme.yellow};
@@ -99,14 +98,14 @@ const DescriptionStock = styled.span`
 const PriceAndStockWrapper = styled.div`
    {
     display: flex;
-    justify-content: space-around;
-    padding-left: 12px;
+    justify-content: flex-end;
   }
 `;
 
 const ProductPrice = styled.span`
   color: ${(props) => props.theme.yellow};
   font-size: 24px;
+  margin-left: 24px;
 `;
 
 const ProductCompany = styled.span`
