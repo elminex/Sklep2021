@@ -10,9 +10,9 @@ export const Shop = () => {
       <Wrapper>
         <ProductList>
           {products.map((item) => (
-            <li key={item.id}>
+            <ProductListItem key={item.id}>
               <ProductPreview elem={item} />
-            </li>
+            </ProductListItem>
           ))}
         </ProductList>
       </Wrapper>
@@ -32,4 +32,8 @@ const ProductList = styled.ul`
   @media (min-width: 768px) {
     margin: 0 0 12px;
   }
+`;
+
+const ProductListItem = styled.li`
+  border-bottom: 2px solid ${(props) => props.theme.yellow};
 `;

@@ -1,32 +1,66 @@
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
-  faFacebookSquare, faInstagram, faTwitterSquare, faPinterestSquare,
-} from '@fortawesome/free-brands-svg-icons';
-import './Social.scss';
+  faFacebookSquare,
+  faInstagram,
+  faTwitterSquare,
+  faPinterestSquare,
+} from "@fortawesome/free-brands-svg-icons";
+import styled from "styled-components";
 
 export const Social = ({ container }) => (
-  <div className={container !== '' ? `social__container social__container--${container}` : 'social__container'}>
-    <ul className="social__list">
-      <li className="social__item">
-        <a className="social__link" href="https://www.facebook.com">
+  <SocialContainer container={container}>
+    <SocialList>
+      <SocialItem>
+        <SocialLink container={container} href="https://www.facebook.com">
           <FontAwesomeIcon icon={faFacebookSquare} />
-        </a>
-      </li>
-      <li className="social__item">
-        <a className="social__link" href="https://www.instagram.com">
+        </SocialLink>
+      </SocialItem>
+      <SocialItem>
+        <SocialLink container={container} href="https://www.instagram.com">
           <FontAwesomeIcon icon={faInstagram} />
-        </a>
-      </li>
-      <li className="social__item">
-        <a className="social__link" href="https://www.twitter.com">
+        </SocialLink>
+      </SocialItem>
+      <SocialItem>
+        <SocialLink container={container} href="https://www.twitter.com">
           <FontAwesomeIcon icon={faTwitterSquare} />
-        </a>
-      </li>
-      <li className="social__item">
-        <a className="social__link" href="https://www.pinterest.com">
+        </SocialLink>
+      </SocialItem>
+      <SocialItem>
+        <SocialLink container={container} href="https://www.pinterest.com">
           <FontAwesomeIcon icon={faPinterestSquare} />
-        </a>
-      </li>
-    </ul>
-  </div>
+        </SocialLink>
+      </SocialItem>
+    </SocialList>
+  </SocialContainer>
 );
+
+const SocialContainer = styled.div`
+  background-color: ${(props) =>
+    props.container === ("header" || "contact")
+      ? props.theme.backgroundGrey
+      : ""};
+  text-align: center;
+  padding: 32px 0;
+  @media (min-width: 768px) {
+    display: none;
+  }
+`;
+
+const SocialList = styled.ul`
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+`;
+
+const SocialItem = styled.li`
+  display: inline-block;
+`;
+
+const SocialLink = styled.a`
+  font-size: 24px;
+  color: ${(props) =>
+    props.container === "footer"
+      ? props.theme.textWhite
+      : props.theme.textBlack};
+  padding: 16px;
+`;

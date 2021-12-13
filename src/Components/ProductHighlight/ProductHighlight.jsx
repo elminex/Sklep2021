@@ -1,6 +1,5 @@
 import { Link } from "react-router-dom";
 import styled from "styled-components";
-import "./../../variables.scss";
 
 export const ProductHighlight = ({ elem }) => {
   return (
