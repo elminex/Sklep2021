@@ -36,11 +36,6 @@ export const Header = () => {
             </StyledNavLink>
           </NavItem>
           <NavItem>
-            <StyledNavLink onClick={() => setMenu(!menu)} to="/terms">
-              Terms and Conditions
-            </StyledNavLink>
-          </NavItem>
-          <NavItem>
             <StyledNavLink onClick={() => setMenu(!menu)} to="/contact">
               Contact
             </StyledNavLink>

@@ -5,13 +5,13 @@ import styled from "styled-components";
 
 export const MainPage = () => {
   const [topSellers, setTopSellers] = useState([]);
-  const data = useContext(ProductsContext);
+  const products = useContext(ProductsContext).products;
   useEffect(() => {
-    if (data.products) {
-      const sortedData = data.products.sort((a, b) => b.sales - a.sales).slice(0, 6);
+    if (products) {
+      const sortedData = products.sort((a, b) => b.sales - a.sales).slice(0, 6);
       setTopSellers(sortedData);
     }
-  }, [data]);
+  },[products] );
   if (topSellers.length > 0) {
     return (
       <div>

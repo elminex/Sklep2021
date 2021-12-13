@@ -3,7 +3,7 @@ export const Contact = () => {
   return (
     <Wrapper>
       <StyledForm>
-        <StyledLabel for="fname">
+        <StyledLabel htmlFor="fname">
           First name:
           <StyledInput
             requiredtype="text"
@@ -12,7 +12,7 @@ export const Contact = () => {
             placeholder="First Name"
           />
         </StyledLabel>
-        <StyledLabel for="lname">
+        <StyledLabel htmlFor="lname">
           Last name:
           <StyledInput
             required
@@ -22,7 +22,7 @@ export const Contact = () => {
             placeholder="Last Name"
           />
         </StyledLabel>
-        <StyledLabel for="message">
+        <StyledLabel htmlFor="message">
           Message:
           <textarea
             required

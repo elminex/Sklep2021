@@ -17,13 +17,10 @@ export const Footer = () => (
           <StyledNavLink to="/shop">Shop</StyledNavLink>
         </FooterListItem>
         <FooterListItem>
-          <StyledNavLink to="/terms">Terms and Conditions</StyledNavLink>
+          <StyledNavLink to="/cart">Cart</StyledNavLink>
         </FooterListItem>
         <FooterListItem>
           <StyledNavLink to="/contact">Contact</StyledNavLink>
-        </FooterListItem>
-        <FooterListItem>
-          <StyledNavLink to="/cart">Cart</StyledNavLink>
         </FooterListItem>
       </FooterNavList>
     </FooterNav>
